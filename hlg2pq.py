@@ -4,7 +4,7 @@ import av
 import cv2
 import numpy as np
 
-from utils.transfer import eotf_hlg, oetf_pq10
+from utils.transfer import eotf_hlg, oetf_pq
 from utils.yuv_rgb_conv import rgb_to_yuv_rec2020_limited, yuv_to_rgb_rec2020
 
 INPUT_VIDEO = "test_hlg.mp4"
@@ -114,7 +114,7 @@ def process_video(input_path, output_path):
         rgb_linear_normalized = np.clip(rgb_linear_normalized, 0.0, 1.0)
 
         # E. Apply PQ OETF
-        rgb_pq = oetf_pq10(rgb_linear_normalized)
+        rgb_pq = oetf_pq(rgb_linear_normalized)
 
         # F. RGB -> YUV Rec.2020 (10-bit)
         y_final, u_final, v_final = rgb_to_yuv_rec2020_limited(rgb_pq)

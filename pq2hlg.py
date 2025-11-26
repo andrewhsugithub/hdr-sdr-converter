@@ -4,7 +4,7 @@ import av
 import cv2
 import numpy as np
 
-from utils.transfer import eotf_pq10, oetf_hlg
+from utils.transfer import eotf_pq, oetf_hlg
 from utils.yuv_rgb_conv import rgb_to_yuv_rec2020_limited, yuv_to_rgb_rec2020
 
 INPUT_VIDEO = "test_pq.mp4"
@@ -99,7 +99,7 @@ def process_video(input_path, output_path):
         rgb_nonlinear = yuv_to_rgb_rec2020(y_norm, u_resized, v_resized)
 
         # B. Linearize PQ -> Nits
-        rgb_linear_nits = eotf_pq10(rgb_nonlinear) * 10000.0
+        rgb_linear_nits = eotf_pq(rgb_nonlinear) * 10000.0
 
         # C. Normalize for HLG
         # HLG is relative. We must map "Nits" to 0.0-1.0.

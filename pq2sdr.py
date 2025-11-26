@@ -4,7 +4,7 @@ import av
 import cv2
 import numpy as np
 
-from utils.transfer import eotf_pq10, oetf_sdr
+from utils.transfer import eotf_pq, oetf_sdr
 from utils.yuv_rgb_conv import rgb_to_yuv420_limited, yuv_to_rgb_rec2020
 
 INPUT_VIDEO = "test_pq.mp4"
@@ -137,7 +137,7 @@ def process_video(input_path, output_path):
         rgb_nonlinear = yuv_to_rgb_rec2020(y_norm, u_resized, v_resized)
 
         # B. Linearize (PQ EOTF) -> Returns Nits
-        rgb_linear_nits = eotf_pq10(rgb_nonlinear) * 10000.0
+        rgb_linear_nits = eotf_pq(rgb_nonlinear) * 10000.0
 
         # C. Scale (npl=100) -> 1.0 = 100 Nits
         rgb_linear_2020 = rgb_linear_nits / 100.0

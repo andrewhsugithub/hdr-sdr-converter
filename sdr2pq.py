@@ -4,7 +4,7 @@ import av
 import cv2
 import numpy as np
 
-from utils.transfer import eotf_sdr, oetf_pq10
+from utils.transfer import eotf_sdr, oetf_pq
 from utils.yuv_rgb_conv import rgb_to_yuv_rec2020_limited, yuv_to_rgb_rec709
 
 INPUT_VIDEO = "test_sdr.mp4"
@@ -69,7 +69,7 @@ def process_video(input_path, output_path):
     # Metadata for QuickTime/TVs
     out_stream.codec_context.codec_tag = "hvc1"
 
-    print(f"Converting SDR -> PQ10: {input_path} -> {output_path}...")
+    print(f"Converting SDR -> PQ: {input_path} -> {output_path}...")
 
     out_stream.options = {
         "crf": "20",
@@ -133,7 +133,7 @@ def process_video(input_path, output_path):
         rgb_linear_pq_normalized = rgb_linear_2020 * (203.0 / 10000.0)
 
         # E. Apply PQ OETF (Linear -> PQ Signal)
-        rgb_pq = oetf_pq10(rgb_linear_pq_normalized)
+        rgb_pq = oetf_pq(rgb_linear_pq_normalized)
 
         # F. RGB -> YUV (Rec.2020 10-bit)
         y_final, u_final, v_final = rgb_to_yuv_rec2020_limited(rgb_pq)
