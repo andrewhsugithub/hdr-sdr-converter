@@ -110,7 +110,7 @@ def main():
     output = args.output
     if output is None:
         if args.command == "rewrap":
-            output = f"output/test_{args.src}2{args.dst}_rewrapped.mp4"
+            output = f"output/rewrap/test_{args.src}2{args.dst}_rewrapped.mp4"
         else:
             output = f"output/test_{args.command}.mp4"
 

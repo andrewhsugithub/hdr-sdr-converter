@@ -485,7 +485,7 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `output/test_pq2sdr_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+- `output/rewrap/test_pq2sdr_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
 
   ```bash
   python main.py rewrap -i test_pq.mp4 --src pq --dst sdr
@@ -674,7 +674,7 @@ The converted videos are saved in the `output/` directory:
     ```
   </details>
 
-- `output/test_pq2hlg_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+- `output/rewrap/test_pq2hlg_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
 
   ```bash
   python main.py rewrap -i test_pq.mp4 --src pq --dst hlg
@@ -862,7 +862,7 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `output/test_hlg2sdr_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+- `output/rewrap/test_hlg2sdr_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
 
   ```bash
   python main.py rewrap -i test_hlg.mp4 --src hlg --dst sdr
@@ -1052,7 +1052,7 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `output/test_hlg2pq_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+- `output/rewrap/test_hlg2pq_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
 
   ```bash
   python main.py rewrap -i test_hlg.mp4 --src hlg --dst pq
@@ -1240,7 +1240,7 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `output/test_sdr2pq_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+- `output/rewrap/test_sdr2pq_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
 
   ```bash
   python main.py rewrap -i test_sdr.mp4 --src sdr --dst pq
@@ -1428,7 +1428,7 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `output/test_sdr2hlg_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+- `output/rewrap/test_sdr2hlg_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
 
   ```bash
   python main.py rewrap -i test_sdr.mp4 --src sdr --dst hlg
