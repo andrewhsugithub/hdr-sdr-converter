@@ -382,7 +382,7 @@ The converted videos are saved in the `output/` directory:
 - `output/ffmpeg/pq2sdr.mp4`: Converted to SDR using ffmpeg command:
 
   ```bash
-  ffmpeg -i test.mp4 -vf "zscale=t=linear:npl=100, format=gbrpf32le, zscale=p=bt709, zscale=t=bt709:m=bt709:r=tv, format=yuv420p" ./output/ffmpeg/pq2sdr.mp4
+  ffmpeg -i test_pq.mp4 -vf "zscale=t=linear:npl=100, format=gbrpf32le, zscale=p=bt709, zscale=t=bt709:m=bt709:r=tv, format=yuv420p" ./output/ffmpeg/pq2sdr.mp4
   ```
 
   <details>
@@ -396,12 +396,12 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `pq2sdr.py`: Output at `output/test_pq2sdr.mp4`
+- `output/test_pq2sdr.mp4`: Converted using `main.py` command:
 
   ```bash
-  python pq2sdr.py
+  python main.py pq2sdr -i test_pq.mp4
   # or using uv
-  uv run pq2sdr.py
+  uv run main.py pq2sdr -i test_pq.mp4
   ```
 
   <details>
@@ -442,7 +442,7 @@ The converted videos are saved in the `output/` directory:
         "start_time": "0.000000",
         "duration_ts": 107520,
         "duration": "7.000000",
-        "bit_rate": "23310107",
+        "bit_rate": "24181306",
         "bits_per_raw_sample": "8",
         "nb_frames": "210",
         "extradata_size": 50,
@@ -480,9 +480,9 @@ The converted videos are saved in the `output/` directory:
   </details>
 
 - Comparison
-  | Original HDR PQ | Converted SDR using ffmpeg | Converted SDR using pq2sdr.py |
+  | Original HDR PQ | Converted SDR using ffmpeg | Converted SDR using main.py |
   |---|---|---|
-  |<video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="output/ffmpeg/pq2sdr.mp4" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="output/test_pq2sdr.mp4" placeholder="Converted SDR using pq2sdr.py" autoplay loop controls muted title="Converted SDR using pq2sdr.py"></video>|
+  |<video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="output/ffmpeg/pq2sdr.mp4" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="output/test_pq2sdr.mp4" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
 
 2. HDR (PQ10) ➡️ HDR (HLG) Conversion
 
@@ -505,12 +505,12 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `pq2hlg.py`: Output at `output/test_pq2hlg.mp4`
+- `output/test_pq2hlg.mp4`: Converted using `main.py` command:
 
   ```bash
-  python pq2hlg.py
+  python main.py pq2hlg -i test_pq.mp4
   # or using uv
-  uv run pq2hlg.py
+  uv run main.py pq2hlg -i test_pq.mp4
   ```
 
   <details>
@@ -550,7 +550,7 @@ The converted videos are saved in the `output/` directory:
           "start_time": "0.000000",
           "duration_ts": 107520,
           "duration": "7.000000",
-          "bit_rate": "11529265",
+          "bit_rate": "12564515",
           "nb_frames": "210",
           "extradata_size": 2438,
           "disposition": {
@@ -586,9 +586,9 @@ The converted videos are saved in the `output/` directory:
   </details>
 
 - Comparison
-  | Original HDR PQ | Converted HLG using ffmpeg | Converted HLG using pq2hlg.py |
+  | Original HDR PQ | Converted HLG using ffmpeg | Converted HLG using main.py |
   |---|---|---|
-  |<video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="output/ffmpeg/pq2hlg.mp4" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="output/test_pq2hlg.mp4" placeholder="Converted HLG using pq2hlg.py" autoplay loop controls muted title="Converted HLG using pq2hlg.py"></video>|
+  |<video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="output/ffmpeg/pq2hlg.mp4" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="output/test_pq2hlg.mp4" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
 
 3. HDR (HLG) ➡️ SDR Conversion
 
@@ -609,12 +609,12 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `hlg2sdr.py`: Output at `output/test_hlg2sdr.mp4`
+- `output/test_hlg2sdr.mp4`: Converted using `main.py` command:
 
   ```bash
-  python hlg2sdr.py
+  python main.py hlg2sdr -i test_hlg.mp4
   # or using uv
-  uv run hlg2sdr.py
+  uv run main.py hlg2sdr -i test_hlg.mp4
   ```
 
   <details>
@@ -655,7 +655,7 @@ The converted videos are saved in the `output/` directory:
         "start_time": "0.033000",
         "duration_ts": 89089,
         "duration": "2.969633",
-        "bit_rate": "6324643",
+        "bit_rate": "6882767",
         "bits_per_raw_sample": "8",
         "nb_frames": "89",
         "extradata_size": 49,
@@ -693,9 +693,9 @@ The converted videos are saved in the `output/` directory:
   </details>
 
 - Comparison
-  | Original HDR HLG | Converted SDR using ffmpeg | Converted SDR using hlg2sdr.py |
+  | Original HDR HLG | Converted SDR using ffmpeg | Converted SDR using main.py |
   |---|---|---|
-  |<video src="test_hlg.mp4" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="output/ffmpeg/hlg2sdr.mp4" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="output/test_hlg2sdr.mp4" placeholder="Converted SDR using hlg2sdr.py" autoplay loop controls muted title="Converted SDR using hlg2sdr.py"></video>|
+  |<video src="test_hlg.mp4" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="output/ffmpeg/hlg2sdr.mp4" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="output/test_hlg2sdr.mp4" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
 
 4. HDR (HLG) ➡️ HDR (PQ10) Conversion
 
@@ -718,12 +718,12 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
-- `hlg2pq.py`: Output at `output/test_hlg2pq.mp4`
+- `output/test_hlg2pq.mp4`: Converted using `main.py` command:
 
   ```bash
-  python hlg2pq.py
+  python main.py hlg2pq -i test_hlg.mp4
   # or using uv
-  uv run hlg2pq.py
+  uv run main.py hlg2pq -i test_hlg.mp4
   ```
 
   <details>
@@ -763,7 +763,7 @@ The converted videos are saved in the `output/` directory:
         "start_time": "0.033000",
         "duration_ts": 89089,
         "duration": "2.969633",
-        "bit_rate": "2276997",
+        "bit_rate": "2574192",
         "nb_frames": "89",
         "extradata_size": 2442,
         "disposition": {
@@ -800,9 +800,9 @@ The converted videos are saved in the `output/` directory:
   </details>
 
 - Comparison
-  | Original HDR HLG | Converted PQ using ffmpeg | Converted PQ using hlg2pq.py |
+  | Original HDR HLG | Converted PQ using ffmpeg | Converted PQ using main.py |
   |---|---|---|
-  |<video src="test_hlg.mp4" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="output/ffmpeg/hlg2pq.mp4" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="output/test_hlg2pq.mp4" placeholder="Converted PQ using hlg2pq.py" autoplay loop controls muted title="Converted PQ using hlg2pq.py"></video>|
+  |<video src="test_hlg.mp4" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="output/ffmpeg/hlg2pq.mp4" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="output/test_hlg2pq.mp4" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
 
 5. SDR ➡️ HDR (PQ10) Conversion
 
@@ -825,12 +825,12 @@ The converted videos are saved in the `output/` directory:
 
     </details>
 
-- `sdr2pq.py`: Output at `output/test_sdr2pq.mp4`
+- `output/test_sdr2pq.mp4`: Converted using `main.py` command:
 
   ```bash
-  python sdr2pq.py
+  python main.py sdr2pq -i test_sdr.mp4
   # or using uv
-  uv run sdr2pq.py
+  uv run main.py sdr2pq -i test_sdr.mp4
   ```
 
   <details>
@@ -870,7 +870,7 @@ The converted videos are saved in the `output/` directory:
         "start_time": "0.000000",
         "duration_ts": 153600,
         "duration": "10.000000",
-        "bit_rate": "4455721",
+        "bit_rate": "4456511",
         "nb_frames": "300",
         "extradata_size": 2438,
         "disposition": {
@@ -907,9 +907,9 @@ The converted videos are saved in the `output/` directory:
   </details>
 
 - Comparison
-  | Original SDR | Converted PQ using ffmpeg | Converted PQ using sdr2pq.py |
+  | Original SDR | Converted PQ using ffmpeg | Converted PQ using main.py |
   |---|---|---|
-  |<video src="test_sdr.mp4" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="output/ffmpeg/sdr2pq.mp4" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="output/test_sdr2pq.mp4" placeholder="Converted PQ using sdr2pq.py" autoplay loop controls muted title="Converted PQ using sdr2pq.py"></video>|
+  |<video src="test_sdr.mp4" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="output/ffmpeg/sdr2pq.mp4" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="output/test_sdr2pq.mp4" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
 
 6. SDR ➡️ HDR (HLG) Conversion
 
@@ -932,12 +932,12 @@ The converted videos are saved in the `output/` directory:
 
     </details>
 
-- `sdr2hlg.py`: Output at `output/test_sdr2hlg.mp4`
+- `output/test_sdr2hlg.mp4`: Converted using `main.py` command:
 
   ```bash
-  python sdr2hlg.py
+  python main.py sdr2hlg -i test_sdr.mp4
   # or using uv
-  uv run sdr2hlg.py
+  uv run main.py sdr2hlg -i test_sdr.mp4
   ```
 
   <details>
@@ -977,7 +977,7 @@ The converted videos are saved in the `output/` directory:
         "start_time": "0.000000",
         "duration_ts": 153600,
         "duration": "10.000000",
-        "bit_rate": "5601216",
+        "bit_rate": "5601019",
         "nb_frames": "300",
         "extradata_size": 2438,
         "disposition": {
@@ -1014,22 +1014,20 @@ The converted videos are saved in the `output/` directory:
   </details>
 
 - Comparison
-  | Original SDR | Converted HLG using ffmpeg | Converted HLG using sdr2hlg.py |
+  | Original SDR | Converted HLG using ffmpeg | Converted HLG using main.py |
   |---|---|---|
-  |<video src="test_sdr.mp4" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="output/ffmpeg/sdr2hlg.mp4" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="output/test_sdr2hlg.mp4" placeholder="Converted HLG using sdr2hlg.py" autoplay loop controls muted title="Converted HLG using sdr2hlg.py"></video>|
+  |<video src="test_sdr.mp4" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="output/ffmpeg/sdr2hlg.mp4" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="output/test_sdr2hlg.mp4" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
 
 # References
 
-https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2100-3-202502-I!!PDF-E.pdf
 https://www.itu.int/rec/R-REC-BT.2100-3-202502-I/en
 
-https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.709-6-201506-I!!PDF-E.pdf
 https://www.itu.int/rec/R-REC-BT.709-6-201506-I/en
 
-https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.1886-0-201103-I!!PDF-E.pdf
 https://www.itu.int/rec/R-REC-BT.1886-0-201103-I/en
 
-https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2087-0-201510-I!!PDF-E.pdf
 https://www.itu.int/rec/R-REC-BT.2087/en
 
-https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.2020-2-201510-I!!PDF-E.pdf
+https://www.itu.int/rec/R-REC-BT.2020-2-201510-I/en
+
+https://www.itu.int/pub/R-REP-BT.2408-8-2024
