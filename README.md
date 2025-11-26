@@ -485,10 +485,93 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
+- `output/test_pq2sdr_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+
+  ```bash
+  python main.py rewrap -i test_pq.mp4 --src pq --dst sdr
+  # or using uv
+  uv run main.py rewrap -i test_pq.mp4 --src pq --dst sdr
+  ```
+
+  <details>
+    <summary>Video Details using <span style="font-style: italic;">ffprobe</span> (same as above command just diff file):</summary>
+
+  ```json
+  {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 107520,
+        "duration": "7.000000",
+        "bit_rate": "15408329",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "210",
+        "extradata_size": 50,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ]
+  }
+  ```
+
+  </details>
+
 - Comparison
-  | Original HDR PQ | Converted SDR using ffmpeg | Converted SDR using main.py |
-  |---|---|---|
-  |<video src="https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="https://github.com/user-attachments/assets/e0472e23-deaf-416f-8404-dc488b058d2a" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/f5e7df55-9019-4963-a37c-0301379b3559" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
+  | Original HDR PQ | Converted SDR using ffmpeg | Converted SDR using main.py | Rewrapped SDR using main.py |
+  |---|---|---|---|
+  |<video src="https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="https://github.com/user-attachments/assets/e0472e23-deaf-416f-8404-dc488b058d2a" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/f5e7df55-9019-4963-a37c-0301379b3559" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>||
 
 2. HDR (PQ10) ➡️ HDR (HLG) Conversion
 
@@ -591,10 +674,91 @@ The converted videos are saved in the `output/` directory:
     ```
   </details>
 
+- `output/test_pq2hlg_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+
+  ```bash
+  python main.py rewrap -i test_pq.mp4 --src pq --dst hlg
+  # or using uv
+  uv run main.py rewrap -i test_pq.mp4 --src pq --dst hlg
+  ```
+
+  <details>
+    <summary>Video Details using <span style="font-style: italic;">ffprobe</span> (same as above command just diff file):</summary>
+
+  ```json
+  {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "hevc",
+        "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+        "profile": "Main 10",
+        "codec_type": "video",
+        "codec_tag_string": "hvc1",
+        "codec_tag": "0x31637668",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p10le",
+        "level": 120,
+        "color_range": "tv",
+        "color_space": "bt2020nc",
+        "color_transfer": "arib-std-b67",
+        "color_primaries": "bt2020",
+        "chroma_location": "left",
+        "refs": 1,
+        "view_ids_available": "",
+        "view_pos_available": "",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 107520,
+        "duration": "7.000000",
+        "bit_rate": "10413285",
+        "nb_frames": "210",
+        "extradata_size": 2438,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ]
+  }
+  ```
+
+  </details>
+
 - Comparison
-  | Original HDR PQ | Converted HLG using ffmpeg | Converted HLG using main.py |
-  |---|---|---|
-  |<video src="https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="https://github.com/user-attachments/assets/2b3215cf-fe6a-4dac-9c63-ca3b96df03ee" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/abe5750c-a031-454c-817d-1f6e917d5b4b" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
+  | Original HDR PQ | Converted HLG using ffmpeg | Converted HLG using main.py | Rewrapped HLG using main.py |
+  |---|---|---|---|
+  |<video src="https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="https://github.com/user-attachments/assets/2b3215cf-fe6a-4dac-9c63-ca3b96df03ee" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/abe5750c-a031-454c-817d-1f6e917d5b4b" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>||
 
 3. HDR (HLG) ➡️ SDR Conversion
 
@@ -698,10 +862,93 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
+- `output/test_hlg2sdr_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+
+  ```bash
+  python main.py rewrap -i test_hlg.mp4 --src hlg --dst sdr
+  # or using uv
+  uv run main.py rewrap -i test_hlg.mp4 --src hlg --dst sdr
+  ```
+
+  <details>
+    <summary>Video Details using <span style="font-style: italic;">ffprobe</span> (same as above command just diff file):</summary>
+
+  ```json
+  {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30000/1001",
+        "avg_frame_rate": "30000/1001",
+        "time_base": "1/30000",
+        "start_pts": 990,
+        "start_time": "0.033000",
+        "duration_ts": 89089,
+        "duration": "2.969633",
+        "bit_rate": "4849657",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "89",
+        "extradata_size": 49,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ]
+  }
+  ```
+
+  </details>
+
 - Comparison
-  | Original HDR HLG | Converted SDR using ffmpeg | Converted SDR using main.py |
-  |---|---|---|
-  |<video src="https://github.com/user-attachments/assets/3630df24-6a10-4fc7-9649-e35f7980f555" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="https://github.com/user-attachments/assets/a68847e4-37ca-4b39-a00a-ff3215357e50" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/ebcd5e1c-d9ab-44fe-aea4-2542846b5fce" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
+  | Original HDR HLG | Converted SDR using ffmpeg | Converted SDR using main.py | Rewrap SDR using main.py |
+  |---|---|---|---|
+  |<video src="https://github.com/user-attachments/assets/3630df24-6a10-4fc7-9649-e35f7980f555" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="https://github.com/user-attachments/assets/a68847e4-37ca-4b39-a00a-ff3215357e50" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/ebcd5e1c-d9ab-44fe-aea4-2542846b5fce" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>||
 
 4. HDR (HLG) ➡️ HDR (PQ10) Conversion
 
@@ -805,10 +1052,91 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
+- `output/test_hlg2pq_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+
+  ```bash
+  python main.py rewrap -i test_hlg.mp4 --src hlg --dst pq
+  # or using uv
+  uv run main.py rewrap -i test_hlg.mp4 --src hlg --dst pq
+  ```
+
+  <details>
+    <summary>Video Details using <span style="font-style: italic;">ffprobe</span> (same as above command just diff file):</summary>
+
+  ```json
+  {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "hevc",
+        "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+        "profile": "Main 10",
+        "codec_type": "video",
+        "codec_tag_string": "hvc1",
+        "codec_tag": "0x31637668",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p10le",
+        "level": 120,
+        "color_range": "tv",
+        "color_space": "bt2020nc",
+        "color_transfer": "smpte2084",
+        "color_primaries": "bt2020",
+        "chroma_location": "left",
+        "refs": 1,
+        "view_ids_available": "",
+        "view_pos_available": "",
+        "id": "0x1",
+        "r_frame_rate": "30000/1001",
+        "avg_frame_rate": "30000/1001",
+        "time_base": "1/30000",
+        "start_pts": 990,
+        "start_time": "0.033000",
+        "duration_ts": 89089,
+        "duration": "2.969633",
+        "bit_rate": "2855908",
+        "nb_frames": "89",
+        "extradata_size": 2442,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ]
+  }
+  ```
+
+  </details>
+
 - Comparison
-  | Original HDR HLG | Converted PQ using ffmpeg | Converted PQ using main.py |
-  |---|---|---|
-  |<video src="https://github.com/user-attachments/assets/3630df24-6a10-4fc7-9649-e35f7980f555" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="https://github.com/user-attachments/assets/60150f43-fb81-446f-9f85-4ee6f0660224" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/668aea9f-873d-4300-bda2-4a71623be452" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
+  | Original HDR HLG | Converted PQ using ffmpeg | Converted PQ using main.py | Rewrapped PQ using main.py |
+  |---|---|---|---|
+  |<video src="https://github.com/user-attachments/assets/3630df24-6a10-4fc7-9649-e35f7980f555" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="https://github.com/user-attachments/assets/60150f43-fb81-446f-9f85-4ee6f0660224" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/668aea9f-873d-4300-bda2-4a71623be452" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>||
 
 5. SDR ➡️ HDR (PQ10) Conversion
 
@@ -912,10 +1240,91 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
+- `output/test_sdr2pq_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+
+  ```bash
+  python main.py rewrap -i test_sdr.mp4 --src sdr --dst pq
+  # or using uv
+  uv run main.py rewrap -i test_sdr.mp4 --src sdr --dst pq
+  ```
+
+  <details>
+    <summary>Video Details using <span style="font-style: italic;">ffprobe</span> (same as above command just diff file):</summary>
+
+  ```json
+  {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "hevc",
+        "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+        "profile": "Main 10",
+        "codec_type": "video",
+        "codec_tag_string": "hvc1",
+        "codec_tag": "0x31637668",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p10le",
+        "level": 120,
+        "color_range": "tv",
+        "color_space": "bt2020nc",
+        "color_transfer": "smpte2084",
+        "color_primaries": "bt2020",
+        "chroma_location": "left",
+        "refs": 1,
+        "view_ids_available": "",
+        "view_pos_available": "",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 153600,
+        "duration": "10.000000",
+        "bit_rate": "7674006",
+        "nb_frames": "300",
+        "extradata_size": 2438,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ]
+  }
+  ```
+
+  </details>
+
 - Comparison
-  | Original SDR | Converted PQ using ffmpeg | Converted PQ using main.py |
-  |---|---|---|
-  |<video src="https://github.com/user-attachments/assets/44cc7874-e29a-4ccb-b1c3-ee3a3f375e98" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="https://github.com/user-attachments/assets/9377f253-7506-47a1-b0f5-bb337f15fd13" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/c07aed06-eab7-497e-90c1-d41f69d1d2b7" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
+  | Original SDR | Converted PQ using ffmpeg | Converted PQ using main.py | Rewrapped PQ using main.py |
+  |---|---|---|---|
+  |<video src="https://github.com/user-attachments/assets/44cc7874-e29a-4ccb-b1c3-ee3a3f375e98" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="https://github.com/user-attachments/assets/9377f253-7506-47a1-b0f5-bb337f15fd13" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/c07aed06-eab7-497e-90c1-d41f69d1d2b7" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>||
 
 6. SDR ➡️ HDR (HLG) Conversion
 
@@ -1019,10 +1428,91 @@ The converted videos are saved in the `output/` directory:
 
   </details>
 
+- `output/test_sdr2hlg_rewrapped.mp4`: Rewrap (convert without using transfer functions, changed metadata) using `main.py` command:
+
+  ```bash
+  python main.py rewrap -i test_sdr.mp4 --src sdr --dst hlg
+  # or using uv
+  uv run main.py rewrap -i test_sdr.mp4 --src sdr --dst hlg
+  ```
+
+  <details>
+    <summary>Video Details using <span style="font-style: italic;">ffprobe</span> (same as above command just diff file):</summary>
+
+  ```json
+  {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "hevc",
+        "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+        "profile": "Main 10",
+        "codec_type": "video",
+        "codec_tag_string": "hvc1",
+        "codec_tag": "0x31637668",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p10le",
+        "level": 120,
+        "color_range": "tv",
+        "color_space": "bt2020nc",
+        "color_transfer": "arib-std-b67",
+        "color_primaries": "bt2020",
+        "chroma_location": "left",
+        "refs": 1,
+        "view_ids_available": "",
+        "view_pos_available": "",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 153600,
+        "duration": "10.000000",
+        "bit_rate": "7674006",
+        "nb_frames": "300",
+        "extradata_size": 2438,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ]
+  }
+  ```
+
+  </details>
+
 - Comparison
-  | Original SDR | Converted HLG using ffmpeg | Converted HLG using main.py |
-  |---|---|---|
-  |<video src="https://github.com/user-attachments/assets/44cc7874-e29a-4ccb-b1c3-ee3a3f375e98" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="https://github.com/user-attachments/assets/e8363f86-6e44-4d0f-8a21-ae0974a62b7c" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/aa50be80-3783-4686-8ac9-bea71f14675a" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
+  | Original SDR | Converted HLG using ffmpeg | Converted HLG using main.py | Rewrapped HLG using main.py |
+  |---|---|---|---|
+  |<video src="https://github.com/user-attachments/assets/44cc7874-e29a-4ccb-b1c3-ee3a3f375e98" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="https://github.com/user-attachments/assets/e8363f86-6e44-4d0f-8a21-ae0974a62b7c" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/aa50be80-3783-4686-8ac9-bea71f14675a" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>||
 
 # References
 
