@@ -1,7 +1,7 @@
 [project]
-name = "digital-video"
+name = "hdr-sdr-converter"
 version = "0.1.0"
-description = "Add your description here"
+description = "A lightweight command-line toolkit for converting video between SDR (Rec.709) and HDR formats (Rec.2100 HLG or PQ). It handles color-space transforms, tone-mapping, transfer functions, and bit-depth conversions with precision. The tool also lets you compare FFmpeg-based and Python-based conversion pipelines, generate test outputs for validation, and create rewrapped files that modify metadata without using transfer functions."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
