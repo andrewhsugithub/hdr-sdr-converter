@@ -41,8 +41,8 @@ Examples:
   uv run main.py sdr2pq -i test_sdr.mp4 -o test_sdr2pq.mp4
   python main.py pq2sdr -i test_pq.mp4
   uv run main.py pq2sdr -i test_pq.mp4
-  python main.py rewrap -i input.mp4 --src pq --dst hlg
-  uv run main.py rewrap -i input.mp4 --src pq --dst hlg
+  python main.py rewrap -i test_hlg.mp4 --src hlg --dst sdr
+  uv run main.py rewrap -i test_hlg.mp4 --src hlg --dst sdr
   python main.py list
   uv run main.py list
         """,
@@ -109,7 +109,10 @@ def main():
     # Generate output path if not specified
     output = args.output
     if output is None:
-        output = f"output/test_{args.command}.mp4"
+        if args.command == "rewrap":
+            output = f"output/test_{args.src}2{args.dst}_rewrapped.mp4"
+        else:
+            output = f"output/test_{args.command}.mp4"
 
     output_dir = os.path.dirname(output)
     if output_dir and not os.path.exists(output_dir):

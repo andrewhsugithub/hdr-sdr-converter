@@ -130,11 +130,11 @@ class HLG2SDR(VideoConverter):
         return SDR
 
     def decode_to_linear(self, y, u, v, w, h):
-        y_n, u_n, v_n = normalize_10bit(y, u, v)
-        u_up, v_up = upsample_chroma(u_n, v_n, w, h)
-        rgb = yuv_to_rgb_2020(y_n, u_up, v_up)
-        rgb_lin = eotf_hlg(np.clip(rgb, 0, 1))
-        return np.clip(rgb_lin, 0, None)
+        y_norm, u_norm, v_norm = normalize_10bit(y, u, v)
+        u_up, v_up = upsample_chroma(u_norm, v_norm, w, h)
+        rgb = yuv_to_rgb_2020(y_norm, u_up, v_up)
+        rgb_linear = eotf_hlg(np.clip(rgb, 0, 1))
+        return np.clip(rgb_linear, 0, None)
 
     def encode_from_linear(self, rgb_linear):
         # convert scene light to display light (HLG OOTF)
@@ -163,11 +163,11 @@ class PQ2HLG(VideoConverter):
         return HLG
 
     def decode_to_linear(self, y, u, v, w, h):
-        y_n, u_n, v_n = normalize_10bit(y, u, v)
-        u_up, v_up = upsample_chroma(u_n, v_n, w, h)
-        rgb = yuv_to_rgb_2020(y_n, u_up, v_up)
-        rgb_lin = eotf_pq(np.clip(rgb, 0, 1))
-        return np.clip(rgb_lin, 0, None)
+        y_norm, u_norm, v_norm = normalize_10bit(y, u, v)
+        u_up, v_up = upsample_chroma(u_norm, v_norm, w, h)
+        rgb = yuv_to_rgb_2020(y_norm, u_up, v_up)
+        rgb_linear = eotf_pq(np.clip(rgb, 0, 1))
+        return np.clip(rgb_linear, 0, None)
 
     def encode_from_linear(self, rgb_linear):
         # map pq to hlg
@@ -194,11 +194,11 @@ class HLG2PQ(VideoConverter):
         return PQ
 
     def decode_to_linear(self, y, u, v, w, h):
-        y_n, u_n, v_n = normalize_10bit(y, u, v)
-        u_up, v_up = upsample_chroma(u_n, v_n, w, h)
-        rgb = yuv_to_rgb_2020(y_n, u_up, v_up)
-        rgb_lin = eotf_hlg(np.clip(rgb, 0, 1))
-        return np.clip(rgb_lin, 0, None)
+        y_norm, u_norm, v_norm = normalize_10bit(y, u, v)
+        u_up, v_up = upsample_chroma(u_norm, v_norm, w, h)
+        rgb = yuv_to_rgb_2020(y_norm, u_up, v_up)
+        rgb_linear = eotf_hlg(np.clip(rgb, 0, 1))
+        return np.clip(rgb_linear, 0, None)
 
     def encode_from_linear(self, rgb_linear):
         # convert scene light to display light
@@ -213,7 +213,7 @@ class HLG2PQ(VideoConverter):
 
 
 class Rewrap(VideoConverter):
-    """Copy pixels without transfer conversion (for comparison)."""
+    """Copy pixels without transfer functions (for comparison)."""
 
     def __init__(self, input_path, output_path=None, src_fmt=PQ, dst_fmt=HLG):
         super().__init__(input_path, output_path)
@@ -229,26 +229,38 @@ class Rewrap(VideoConverter):
         return self._dst_fmt
 
     def decode_to_linear(self, y, u, v, w, h):
-        # No EOTF - just normalize
         if self._src_fmt.bit_depth == 10:
             y_norm, u_norm, v_norm = normalize_10bit(y, u, v)
         else:
             y_norm, u_norm, v_norm = normalize_8bit(y, u, v)
         u_up, v_up = upsample_chroma(u_norm, v_norm, w, h)
-        return (
-            yuv_to_rgb_2020(y_norm, u_up, v_up)
-            if self._src_fmt.primaries == Primaries.BT2020
-            else yuv_to_rgb_709(y_norm, u_up, v_up)
-        )
+        if self._src_fmt.primaries == Primaries.BT2020:
+            rgb = yuv_to_rgb_2020(y_norm, u_up, v_up)
+        else:
+            rgb = yuv_to_rgb_709(y_norm, u_up, v_up)
+        if (
+            self._src_fmt.primaries == Primaries.BT709
+            and self._dst_fmt.primaries == Primaries.BT2020
+        ):
+            rgb = linear_709_to_2020(rgb)
+        # Skip EOTF
+        return np.clip(rgb, 0, 1)
 
     def encode_from_linear(self, rgb):
+        # Skip OETF
         rgb = np.clip(rgb, 0, 1)
-        y, u, v = (
-            rgb_to_yuv_2020(rgb)
-            if self._dst_fmt.primaries == Primaries.BT2020
-            else rgb_to_yuv_709(rgb)
-        )
+        if (
+            self._src_fmt.primaries == Primaries.BT2020
+            and self._dst_fmt.primaries == Primaries.BT709
+        ):
+            rgb = linear_2020_to_709(rgb)
+            rgb = np.clip(rgb, 0, 1)
+        if self._dst_fmt.primaries == Primaries.BT2020:
+            y, u, v = rgb_to_yuv_2020(rgb)
+        else:
+            y, u, v = rgb_to_yuv_709(rgb)
         u_down, v_down = downsample_chroma(u, v)
         if self._dst_fmt.bit_depth == 10:
             return quantize_10bit(y, u_down, v_down)
-        return quantize_8bit(y, u_down, v_down)
+        else:
+            return quantize_8bit(y, u_down, v_down)
