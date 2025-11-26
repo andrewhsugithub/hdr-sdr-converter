@@ -48,9 +48,7 @@ ffmpeg -i demo_pq.mp4 -vf "fps=30,scale=1920:1080" -ss 32 -to 39 -c:v libx265 -c
   <video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video">
   Test HDR PQ Video</video>
 
-
 https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5
-
 
 <details>
   <summary style="font-weight: bold; font-size: 24px">Check PQ Test Video Details</summary>
@@ -490,7 +488,7 @@ The converted videos are saved in the `output/` directory:
 - Comparison
   | Original HDR PQ | Converted SDR using ffmpeg | Converted SDR using main.py |
   |---|---|---|
-  |<video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="output/ffmpeg/pq2sdr.mp4" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="output/test_pq2sdr.mp4" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
+  |<video src="https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="https://github.com/user-attachments/assets/e0472e23-deaf-416f-8404-dc488b058d2a" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/f5e7df55-9019-4963-a37c-0301379b3559" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
 
 2. HDR (PQ10) ➡️ HDR (HLG) Conversion
 
@@ -596,7 +594,7 @@ The converted videos are saved in the `output/` directory:
 - Comparison
   | Original HDR PQ | Converted HLG using ffmpeg | Converted HLG using main.py |
   |---|---|---|
-  |<video src="test_pq.mp4" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="output/ffmpeg/pq2hlg.mp4" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="output/test_pq2hlg.mp4" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
+  |<video src="https://github.com/user-attachments/assets/2ad463fe-e470-440e-8216-cc9b7902c4e5" placeholder="Test HDR PQ Video" autoplay loop controls muted title="Test HDR PQ Video"></video>|<video src="https://github.com/user-attachments/assets/2b3215cf-fe6a-4dac-9c63-ca3b96df03ee" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/abe5750c-a031-454c-817d-1f6e917d5b4b" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
 
 3. HDR (HLG) ➡️ SDR Conversion
 
@@ -703,7 +701,7 @@ The converted videos are saved in the `output/` directory:
 - Comparison
   | Original HDR HLG | Converted SDR using ffmpeg | Converted SDR using main.py |
   |---|---|---|
-  |<video src="test_hlg.mp4" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="output/ffmpeg/hlg2sdr.mp4" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="output/test_hlg2sdr.mp4" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
+  |<video src="https://github.com/user-attachments/assets/3630df24-6a10-4fc7-9649-e35f7980f555" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="https://github.com/user-attachments/assets/a68847e4-37ca-4b39-a00a-ff3215357e50" placeholder="Converted SDR using ffmpeg" autoplay loop controls muted title="Converted SDR using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/ebcd5e1c-d9ab-44fe-aea4-2542846b5fce" placeholder="Converted SDR using main.py" autoplay loop controls muted title="Converted SDR using main.py"></video>|
 
 4. HDR (HLG) ➡️ HDR (PQ10) Conversion
 
@@ -810,7 +808,7 @@ The converted videos are saved in the `output/` directory:
 - Comparison
   | Original HDR HLG | Converted PQ using ffmpeg | Converted PQ using main.py |
   |---|---|---|
-  |<video src="test_hlg.mp4" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="output/ffmpeg/hlg2pq.mp4" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="output/test_hlg2pq.mp4" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
+  |<video src="https://github.com/user-attachments/assets/3630df24-6a10-4fc7-9649-e35f7980f555" placeholder="Test HDR HLG Video" autoplay loop controls muted title="Test HDR HLG Video"></video>|<video src="https://github.com/user-attachments/assets/60150f43-fb81-446f-9f85-4ee6f0660224" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/668aea9f-873d-4300-bda2-4a71623be452" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
 
 5. SDR ➡️ HDR (PQ10) Conversion
 
@@ -917,7 +915,7 @@ The converted videos are saved in the `output/` directory:
 - Comparison
   | Original SDR | Converted PQ using ffmpeg | Converted PQ using main.py |
   |---|---|---|
-  |<video src="test_sdr.mp4" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="output/ffmpeg/sdr2pq.mp4" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="output/test_sdr2pq.mp4" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
+  |<video src="https://github.com/user-attachments/assets/44cc7874-e29a-4ccb-b1c3-ee3a3f375e98" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="https://github.com/user-attachments/assets/9377f253-7506-47a1-b0f5-bb337f15fd13" placeholder="Converted PQ using ffmpeg" autoplay loop controls muted title="Converted PQ using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/c07aed06-eab7-497e-90c1-d41f69d1d2b7" placeholder="Converted PQ using main.py" autoplay loop controls muted title="Converted PQ using main.py"></video>|
 
 6. SDR ➡️ HDR (HLG) Conversion
 
@@ -1024,7 +1022,7 @@ The converted videos are saved in the `output/` directory:
 - Comparison
   | Original SDR | Converted HLG using ffmpeg | Converted HLG using main.py |
   |---|---|---|
-  |<video src="test_sdr.mp4" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="output/ffmpeg/sdr2hlg.mp4" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="output/test_sdr2hlg.mp4" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
+  |<video src="https://github.com/user-attachments/assets/44cc7874-e29a-4ccb-b1c3-ee3a3f375e98" placeholder="Test SDR Video" autoplay loop controls muted title="Test SDR Video"></video>|<video src="https://github.com/user-attachments/assets/e8363f86-6e44-4d0f-8a21-ae0974a62b7c" placeholder="Converted HLG using ffmpeg" autoplay loop controls muted title="Converted HLG using ffmpeg"></video>|<video src="https://github.com/user-attachments/assets/aa50be80-3783-4686-8ac9-bea71f14675a" placeholder="Converted HLG using main.py" autoplay loop controls muted title="Converted HLG using main.py"></video>|
 
 # References
 
